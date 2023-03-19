@@ -1,4 +1,5 @@
 using System.Windows.Forms.VisualStyles;
+using SaleProductsManagerment.code;
 
 namespace SaleProductsManagerment
 {
@@ -28,8 +29,15 @@ namespace SaleProductsManagerment
             NativeMethods.DeleteObject(ptr);
 
         }
-
         private void btn_login_event(object sender, EventArgs e)
+        {
+              HandleControllerChekcFalse chekcFalse = new HandleControllerChekcFalse();
+            chekcFalse.checkName(this.user_name_controller.Text, psw_controller.Text);
+            pwd_check_label.Text = chekcFalse._password??"";
+            username_check_label.Text = chekcFalse._userName??"";
+
+        }
+        private void btn_login_event()
         {
             btn_logIncontroller.BackColor = Color.Green;
             if (user_name_controller.Text == "")

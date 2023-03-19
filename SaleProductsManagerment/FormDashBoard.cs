@@ -1,5 +1,7 @@
 ﻿
 
+using SaleProductsManagerment.code;
+
 namespace SaleProductsManagerment
 {
     public partial class FormDashBoard : Form

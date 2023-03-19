@@ -4,27 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaleProductsManagerment
+namespace SaleProductsManagerment.code
 {
 
 
-    public class ChangeApplication 
+    public class ChangeApplication
     {
-        public static   bool value = false;
+        public static bool value = false;
     }
 
-    public class Contants {
+    public class Contants
+    {
         public static void decoratorBackgroundColor(Panel panel, Color color)
         {
-           panel.BackColor = color;
+            panel.BackColor = color;
         }
     }
-     
+
     public class NativeMethods
     {
-     
+
         [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        public static extern System.IntPtr CreateRoundRectRgn
+        public static extern IntPtr CreateRoundRectRgn
          (
           int nLeftRect, // x-coordinate of upper-left corner
           int nTopRect, // y-coordinate of upper-left corner
@@ -35,11 +36,11 @@ namespace SaleProductsManagerment
          );
 
         [System.Runtime.InteropServices.DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
-        public static extern bool DeleteObject(System.IntPtr hObject);
-        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool DeleteObject(IntPtr hObject);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
     }
 }
