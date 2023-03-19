@@ -25,17 +25,44 @@ namespace SaleProductsManagerment.code
            
 
         }
+        public string onRequestSucces()
+        {
+            if (_userName == "Admin" && _password == "123456")
+                return "yes";
+            return "no";
+
+        }
 
     }
-      public  class HandleControllerChekcFalse : Login
+     public class HandleControllerChekcProcessing : Login
     {
-        
-    public  string checkName(string user ,string pwd)
+
+
+        public HandleControllerChekcProcessing(string user, string pwd)
         {
-             if (user != "") return this._userName= "Invalide";    
-           if (pwd != "") return this._password= "Invalide"; 
-            return "";
+            this._userName = user;
+            this._password = pwd;
         }
-  }
+        public string userNameController()
+        {
+            if (_userName == "Admin") return "";
+            if (this._userName!="") return "Invalide"; 
+
+            if (this._userName=="") return "Please input username";  
+            return ""; 
+        }
+        public string passwordController() {
+            string value = "";
+            if (this._password =="123456")return  ""; 
+            if (this._password=="")value=  "Please input  Password";
+            if (this._password!="")value = "Invalide";
+            return value;
+
+        }
+       
+
+    }
+
+
 
 }

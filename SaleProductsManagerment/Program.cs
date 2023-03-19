@@ -14,11 +14,11 @@ namespace SaleProductsManagerment
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
          if (ChangeApplication.value == false)
-              {
+           {
              Application.Run(new LognIn());
-              }
+           }
            if(ChangeApplication.value == true)
-            {
+           {
            Application.Run(new FormDashBoard());
            }
 

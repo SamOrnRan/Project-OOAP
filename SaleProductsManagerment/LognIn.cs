@@ -1,4 +1,4 @@
-using System.Windows.Forms.VisualStyles;
+﻿using System.Windows.Forms.VisualStyles;
 using SaleProductsManagerment.code;
 
 namespace SaleProductsManagerment
@@ -23,6 +23,8 @@ namespace SaleProductsManagerment
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+            // កំណត់តម្លៃដំបូន នៅពេលចាប់ផ្តើម open form   or Initialize ​
+            // ផ្លល់តម្លៃបែបនេះ ដើម្បី៎គូរឲ្យ បាននៃform login នៃ form មានរាងកោង តាមជ្រុងនីមួយ
             panel_container.BackColor = Color.FromArgb(180, 10, 10, 10);
             IntPtr ptr = NativeMethods.CreateRoundRectRgn(0, 0, this.panel_container.Width, this.panel_container.Height, 20, 20);
             this.panel_container.Region = System.Drawing.Region.FromHrgn(ptr);
@@ -31,73 +33,35 @@ namespace SaleProductsManagerment
         }
         private void btn_login_event(object sender, EventArgs e)
         {
-              HandleControllerChekcFalse chekcFalse = new HandleControllerChekcFalse();
-            chekcFalse.checkName(this.user_name_controller.Text, psw_controller.Text);
-            pwd_check_label.Text = chekcFalse._password??"";
-            username_check_label.Text = chekcFalse._userName??"";
 
-        }
-        private void btn_login_event()
-        {
+            // HandleControllerChekcProcessing    គឺជា class មួយដែលប្រើជាមួយ   Chain of Responsibility Pattern 
+            // ក្នុងគោកបំណង  responce នៅពេលត្រួតពិនិត្យ  Form ​មានបញ្ហាអ្វីមួយ វានិង​​  return ដោយការធ្វើសំណើរ តាមរយៈbutton
+            HandleControllerChekcProcessing chekcProccess =  new HandleControllerChekcProcessing(this.user_name_controller.Text, psw_controller.Text);
             btn_logIncontroller.BackColor = Color.Green;
-            if (user_name_controller.Text == "")
-            {
-
-                //  checkForm("Please input User Name");
-                username_check_label.Text = "Please input your user name";
-
-
-            }
-            if (psw_controller.Text == "")
-            {
-                pwd_check_label.Text = "Please input your password";
-            }
-
-            else if (user_name_controller.Text != "")
-            {
-                username_check_label.Text = checkForm();
-            }
-            else if (psw_controller.Text != "")
-            {
-                pwd_check_label.Text = "Invalide";
-            }
-
-            if (user_name_controller.Text == "Admin")
-            {
-                username_check_label.Text = "";
-
-            }
-            if (psw_controller.Text == "123456")
-            {
-                pwd_check_label.Text = "";
-            }
-            if (user_name_controller.Text == "Admin" && psw_controller.Text == "123456")
-            {
-                username_check_label.Text = "";
-                pwd_check_label.Text = "";
-                ChangeApplication.value = true;
+            pwd_check_label.Text = chekcProccess.passwordController().ToString();
+            username_check_label.Text = chekcProccess.userNameController().ToString();
+            if (chekcProccess.onRequestSucces().Equals("yes"))
+            { 
+                //  វានិងផ្ផ្លាស់ប្តូរ form នៅពេល ChangeApplication.value ពិត​ 
+                // បន្ទាប់មក វានិង  បង្ហាញ  Dashboard Form ​
+                // អាចពិនិត្យនៅ ក្នុង file program.cs
+                ChangeApplication.value = true; 
                 this.Close();
-
             }
         }
-
         private void btn_login_enter_event(object sender, EventArgs e)
         {
+             // នៅពេលយើងដាក់ mouse ចូលទៅក្នុង button login វានិងផ្លាស់ប្តូពណ៍
             btn_logIncontroller.BackColor = Color.Silver;
         }
 
         private void btnlogin_leave_event(object sender, EventArgs e)
         {
+            // នៅពេលយើងដក់ mouse ចេញពី button login វានិងផ្លាស់ប្តូពណ៍
+
             btn_logIncontroller.BackColor = Color.White;
 
-        }
 
-        private string checkForm()
-        {
-
-
-
-            return "Invalid";
         }
 
         private void close_event(object sender, EventArgs e)
