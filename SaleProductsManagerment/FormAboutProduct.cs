@@ -51,6 +51,7 @@ namespace SaleProductsManagerment
 
         private void EnterAddProduct(object sender, EventArgs e)
         {
+            
             this.labelAddControllerBtn.BackColor = Color.SkyBlue;
             this.pictureBoxAddBtnController.BackColor = Color.SkyBlue;
             this.btnAddController.BackColor = Color.SkyBlue;

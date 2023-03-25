@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SaleProductsManagerment"
   ],
-  "SelectedNode": "\\SaleProductsManagerment.sln",
+  "SelectedNode": "\\SaleProductsManagerment\\FormAboutProduct.Designer.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SaleProductsManagerment.code
+﻿namespace SaleProductsManagerment.code
 {
     public class Login
     {
         private string UserName​;
         private string Password;
 
-
+       
         public string _userName
         {
             set { this.UserName = value; }
@@ -27,8 +19,7 @@ namespace SaleProductsManagerment.code
         }
         public string onRequestSucces()
         {
-            if (_userName == "Admin" && _password == "123456")
-                return "yes";
+            if (_userName == "Admin" && _password == "123456")return "yes";
             return "no";
 
         }
@@ -45,7 +36,7 @@ namespace SaleProductsManagerment.code
         }
         public string userNameController()
         {
-            if (_userName == "Admin") return "";
+            if (_userName == "Admin")return "";
             if (this._userName!="") return "Invalide"; 
 
             if (this._userName=="") return "Please input username";  
